@@ -21,7 +21,8 @@ import ReactDOM from 'react-dom';
 //importing Apollo Client Libraries
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 
-//have to import pages
+//import pages
+import Pages from "./pages/";
 
 //configure out API URI & cache
 const uri =process.env.API_URI;
