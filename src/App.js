@@ -1,39 +1,44 @@
-//need to be moved to pages
-import { BrowserRouter,Route, Switch } from "react-router-dom";
-import AdminHomePage from "./pages/AdminHomePage";
-import AdminUserList from "./pages/AdminUserList";
-import AdminRegList from "./pages/AdminRegList";
-import AdminRegView from "./pages/AdminRegView";
-import CustomerHomePage from "./pages/CustomerHomePage";
-import CustomerSPView from "./pages/CustomerSPView";
-import CustomerWorkProgress from "./pages/CustomerWorkProgress";
-import CustomerWorkDetails from "./pages/CustomerWorkDetails";
-import Review from "./pages/rating";
-import WorkRequest from "./pages/addRequest";
-import AddWork from "./pages/addWork";
-import Work from "./pages/work";
-import CustomerWorkDetailsUnpaid from "./pages/CustomerWorkDetailsUnpaid";
 
 //importing react 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 //importing Apollo Client Libraries
-import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+import {ApolloClient, ApolloProvider,createHttpLink} from '@apollo/client';
+import {InMemoryCache} from "apollo-cache-inmemory";
+import {setContext} from 'apollo-link-context';
 
 //import pages
 import Pages from "./pages/";
 
 //configure out API URI & cache
-const uri =process.env.API_URI;
+const uri = "http://localhost:8000/api";
 const cache = new InMemoryCache();
+const httpLink = createHttpLink({uri});
+
+//check for a token and return the headers to the context
+const authLink = setContext((_,{headers})=>{
+  return{
+    headers:{
+      ...headers,
+      authorization:localStorage.getItem('token')||''
+    }
+  };
+});
 
 //configure Apollo Client
 const client= new ApolloClient({
-  uri,
+  link:authLink.concat(httpLink),
   cache,
+  resolvers:{},
   connectToDevTools: true
 })
+
+const data = {
+  isLoggedIn: !!localStorage.getItem('token')
+}
+cache.writeData({data});
+client.onResetStore(()=>cache.writeData({data}))
 
 const App=()=> {
   return (

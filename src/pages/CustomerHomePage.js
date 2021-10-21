@@ -1,16 +1,25 @@
+
 import BreadCrumb from "../components/breadcrumb";
 import NavBarCustomer from "../components/customerComponents/NavBarCustomer";
 import SPCard from "../components/customerComponents/SPCard";
 import Header from "../components/header";
-
+//gql 
+import {useQuery,gql} from '@apollo/client';
+import {GET_PROVINCES} from "../GraphQL/Queries"
 
 const CustomerHomePage=()=>{
+    //query hooks
+    const {data, loading, error}= useQuery(GET_PROVINCES);
+    if (loading) return <p>Loading</p>;
+    if (error) return <p>error!</p>;
+
     return(
         <div>
+            {console.log(data)}
             <NavBarCustomer/>
             <Header/>
             
-            <div class="pcoded-main-container main-container">
+            <div className="pcoded-main-container main-container">
                 <div class="pcoded-wrapper">
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
