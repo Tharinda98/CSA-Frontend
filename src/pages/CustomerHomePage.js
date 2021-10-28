@@ -5,19 +5,24 @@ import SPCard from "../components/customerComponents/SPCard";
 import Header from "../components/header";
 //gql 
 import {useQuery,gql} from '@apollo/client';
-import {GET_PROVINCES} from "../GraphQL/Queries"
+import {GET_PROVINCES, GET_SERVICES,GET_PROVINCES_SERVICES_SPS} from "../GraphQL/Queries"
 
 const CustomerHomePage=()=>{
     //query hooks
-    const {data, loading, error}= useQuery(GET_PROVINCES);
+    const {data, loading, error}= useQuery(GET_PROVINCES_SERVICES_SPS);
+    const {data:X,loading:Xl, error:Xe}=useQuery(GET_PROVINCES);
+    //const {data, loading, error}= useQuery(GET_SERVICES);
     if (loading) return <p>Loading</p>;
     if (error) return <p>error!</p>;
 
     return(
         <div>
-            {console.log(data)}
+            
+           
             <NavBarCustomer/>
-            <Header/>
+            {/*header part is connected
+            service provider filtering has to get a query*/}
+            <Header Provinces={data.showProvinces} Services={data.getServices} />
             
             <div className="pcoded-main-container main-container">
                 <div class="pcoded-wrapper">
@@ -26,14 +31,15 @@ const CustomerHomePage=()=>{
                             <div class="main-body">
                                 <div class="page-wrapper">
                                     <BreadCrumb type="Customer" reason="Home Page"/>
+                                    {X.showProvinces.map(p=>(
+                                            <div>{p.provinceName}</div>
+                                        ))}
                                     <div class="row">
                                         
-                                            <SPCard SP_name={"TB Construction"} SP_field={"Plumbing"} SP_location={"Kalutara"} SP_rating={"4.7"}/>
-                                            <SPCard SP_name={"TG Glass"} SP_field={"Glass"} SP_location={"Kalutara"} SP_rating={"4.7"}/>
-                                            <SPCard SP_name={"AL Aluminium"} SP_field={"Aluminuim"} SP_location={"Kalutara"} SP_rating={"4.7"}/>
-                                            <SPCard SP_name={"Concrete works Horana"} SP_field={"Construction"} SP_location={"Kalutara"} SP_rating={"4.7"}/>
-                                            <SPCard SP_name={"Timber works"} SP_field={"Wood Work"} SP_location={"Kalutara"} SP_rating={"4.7"}/>
-
+                                        {/* sp are connected but view profile button have to implent*/}
+                                        {data.showServiceProviders.map(SP=>(
+                                            <SPCard SP_name={SP.name} SP_field={"Plumbing"} SP_location={SP.address} SP_rating={SP.rating}/>
+                                        ))}
                                         
                                     </div>     
                                 </div>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 
-const Header=()=>{
-    const [province,setProvince]=useState('Select District');
+const Header=(props)=>{
+    const [province,setProvince]=useState('Select Province');
     const [Filter,setFilter]=useState('Select Filter');
     const [field,setField]=useState('Select Requirement');
 
@@ -29,9 +29,9 @@ const Header=()=>{
                     <li className="nav-item dropdown">
                         <Link className="dropdown-toggle" to="#0" data-toggle="dropdown">{province}</Link>
                         <ul className="dropdown-menu">
-                            <li><Link className="dropdown-item" to="#0" onClick={()=>setProvince("Kalutara")}>Kalutara</Link></li>
-                            <li><Link className="dropdown-item" to="#0" onClick={()=>setProvince("Jaffna")}>Jaffna</Link></li>
-                            <li><Link className="dropdown-item" to="#0" onClick={()=>setProvince("Galle")}>Galle</Link></li>
+                            {props.Provinces.map(Province=>(
+                               <li><Link className="dropdown-item" to="#0" onClick={()=>setProvince(Province.provinceName)}>{Province.provinceName}</Link></li>
+                            ))}
                         </ul>
                     </li>
                     
@@ -54,11 +54,10 @@ const Header=()=>{
                     <li className="nav-item dropdown">
                         <Link className="dropdown-toggle" to="#0" data-toggle="dropdown">{field}</Link>
                         <ul className="dropdown-menu">
-                            <li><Link className="dropdown-item" to="#0" onClick={()=>setField("Plumbing")}>Plumbing</Link></li>
-                            <li><Link className="dropdown-item" to="#0" onClick={()=>setField("Building")}>Building</Link></li>
-                            <li><Link className="dropdown-item" to="#0" onClick={()=>setField("Glass Work")}>Glass Work</Link></li>
-                            <li><Link className="dropdown-item" to="#0" onClick={()=>setField("Aluminium Work")}>Aluminium Work</Link></li>
-                        </ul>
+                            {props.Services.map(service=>(
+                                <li><Link className="dropdown-item" to="#0" onClick={()=>setField(service.service_name)}>{service.service_name}</Link></li>
+                            ))}
+                            </ul>
                     </li>
                     <li className="nav-item dropdown">
                         <Link className="dropdown-toggle" to="#0" data-toggle="dropdown">{Filter}</Link>
