@@ -59,6 +59,7 @@ const SignForm=props=>{
                         placeholder="Password"
                         onChange={onChange}
                     />
+                    {console.log.variables}
                     <button className="btn btn-primary shadow-2 mb-4" type="submit">Submit</button>
 
             </form>

@@ -6,10 +6,10 @@ import { SIGNIN_CUSTOMER } from "../GraphQL/Mutations";
 
 const SignIn = (props) =>{
     const client =useApolloClient();
-    const [signIn, {loading, error}] =useMutation(SIGNIN_CUSTOMER, {
+    const [signINCustomer, {loading, error}] =useMutation(SIGNIN_CUSTOMER, {
         onCompleted: data => {
             //store the token
-            localStorage.setItem('token',data.signIn);
+            localStorage.setItem('token',data.signINCustomer);
             //update the local cache
             client.writeData({data:{isLoggedIn: true}});
             //redirect
@@ -19,7 +19,7 @@ const SignIn = (props) =>{
 
     return(
         <div>
-            <SignForm action={signIn} formType="signIN" />
+            <SignForm action={signINCustomer} formType="signIN" />
             {/* if the data is loading, display a loading message*/}
             {loading && <p>Loading...</p>}
             {/* if there is an error, display a error message*/}

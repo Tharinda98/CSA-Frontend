@@ -10,6 +10,7 @@ import CustomerHomePage from "./CustomerHomePage";
 import CustomerSPView from "./CustomerSPView";
 import CustomerWorkProgress from "./CustomerWorkProgress";
 import CustomerWorkDetails from "./CustomerWorkDetails";
+import CustomerEditProfile from "./CustomerEditProfile";
 import Review from "./rating";
 import WorkRequest from "./addRequest";
 import AddWork from "./addWork";
@@ -36,6 +37,7 @@ const Pages=()=>{
             <Route path="/AdminRegView" component={AdminRegView} />
             <Route path="/CustomerHomePage" component={CustomerHomePage} />
             <Route path="/CustomerSPView" component={CustomerSPView} />
+            <Route path="/CustomerEditProfile" component={CustomerEditProfile} />
             <Route path="/CustomerWorkProgress" component={CustomerWorkProgress} />
             <Route path="/CustomerWorkDetails" component={CustomerWorkDetails} />
             <Route path="/CustomerWorkDetailsUnpaid" component={CustomerWorkDetailsUnpaid} />

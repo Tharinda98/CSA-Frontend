@@ -43,7 +43,7 @@ const NavBarCustomer=()=>{
                             <label>Settings</label>
                         </li>
                         <li className="nav-item">
-                            <Link to="/CustomerSPView" className="nav-link "><span className="pcoded-micon"><i className="feather icon-home"></i></span><span className="pcoded-mtext">Edit Profile</span></Link>
+                            <Link to="/CustomerEditProfile" className="nav-link "><span className="pcoded-micon"><i className="feather icon-home"></i></span><span className="pcoded-mtext">Edit Profile</span></Link>
                         </li>
                       
                     

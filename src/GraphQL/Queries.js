@@ -1,40 +1,26 @@
 import {useQuery,gql} from '@apollo/client';
+const IS_LOGGED_IN = gql`
+  {
+    isLoggedIn @client
+  }
+`;
 
-//not used
-const GET_PROVINCES =gql `
-query Query {
-  showProvinces {
-    _id
-    provinceName
-  }
-}
-`;
-//not used
-const GET_SERVICES =gql`
-query Query {
-  getServices {
-    service_name
-  }
-}
-`;
-//this one is used to get services provinces and also SP list without filtering
-const GET_PROVINCES_SERVICES_SPS =gql `
-query Query {
-  getServices {
-    service_name
-  }
-  showProvinces {
-    provinceName
-  }
-  showServiceProviders {
+//newest one to get sp list filered by district and service
+const GET_FILTERED_SP_LIST= gql`
+query Query($district: String!, $service: String!) {
+  getServiceProviderByDistrictService(district: $district, service: $service) {
     name
-    contact_no
     rating
-    membership {
-      membership_name
-    }
     address
   }
-}`;
+}`
 
-export {GET_PROVINCES, GET_SERVICES,GET_PROVINCES_SERVICES_SPS};
+const ME= gql `
+query Query {
+  Customer_me {
+    name
+  }
+}
+`
+
+export {IS_LOGGED_IN,GET_FILTERED_SP_LIST,ME};
