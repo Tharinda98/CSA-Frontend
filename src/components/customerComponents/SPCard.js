@@ -2,7 +2,7 @@ import {Link} from "react-router-dom"
 
 
 
-const SPCard=({SP_name,SP_field,SP_location,SP_rating})=>{
+const SPCard=({SP_ID,SP_name,SP_field,SP_location,SP_rating})=>{
 
     return(
         <div className="col-xl-4 col-md-6 col-sm-12">
@@ -43,9 +43,10 @@ const SPCard=({SP_name,SP_field,SP_location,SP_rating})=>{
                                                     </div>
                                                 </div>
                                                 <div className="col-xl-6">
-                                                    <a href="/CustomerSPView" className="nav-link ">
+                                                    {console.log(SP_ID)}
+                                                    <Link to={'/CustomerSPView/'+SP_ID} className="nav-link ">
                                                     <button type="button" className="btn btn-outline-dark align-justify"  style={{fontSize:"10px"}}>View Profile</button>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-const WorkProgress=()=>{
+const WorkProgress=(props)=>{
     return(
         <div>
                             
@@ -9,12 +9,12 @@ const WorkProgress=()=>{
                                         <div className="card-block">
                                             <div className="row align-items-center justify-content-center">
                                                 <div className="col">
-                                                    <h4 className="mb-4">Project Title</h4>
+                                                    <h4 className="mb-4">Service Provider: {props.SP}</h4>
                                                     <div>
-                                                        <p className="m-b-0">Service Provider</p>
+                                                        <p className="m-b-0">Description: {props.job}</p>
                                                     </div>
                                                     <div>
-                                                        <p className="m-b-0">[Start Date]</p>
+                                                        <p className="m-b-0">{props.date}</p>
                                                     </div>
                                                     <div>
                                                         <Link to="/work" className="btn btn-primary" style={{width:'25%',height:'25px',padding:'0px 0px',background:'#008000'}}>
@@ -36,7 +36,7 @@ const WorkProgress=()=>{
                                                 </div>
 
                                                 <div className="col-4 text-right">
-                                                    <p className="m-b-0">2 days</p>
+                                                    <p className="m-b-0">{props.duration} days</p>
                                                     <p className="m-b-0">Remaining</p>
                                                 </div>
                                             </div>

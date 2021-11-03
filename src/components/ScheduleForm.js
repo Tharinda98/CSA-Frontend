@@ -4,13 +4,14 @@ import * as Yup from 'yup';
 import {useState} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { useMutation } from '@apollo/client';
+import { BOOKING } from '../GraphQL/Mutations';
 
 
-function AddWorkerForm({type}){
+function ScheduleForm(props){
 
     const [id,setID] = useState('');
-
-
+    
 
     
 
@@ -18,53 +19,59 @@ function AddWorkerForm({type}){
     const formik = useFormik({
         initialValues:{
            
-            jobTitle:'',
+            
             description:'',
             
-            phone:'',
+            district:'',
             address:'',
-            customerId:'',
+            
             
         },validationSchema: Yup.object({
             
             
-            jobTitle:Yup.string()
-                .required("Please give a title"),
+            
             description: Yup.string()
                 .required("Please give a short description"),
-            phone: Yup.number()
-                .required('Please enter the phone number'),
+            district: Yup.string()
+                .required('Please enter the district'),
            
             address: Yup.string()
                 .required('Please fill the address'),
-            customerId: Yup.string()
-                .required('Please enter the Worker ID')
-                .matches(/^[\w\d]+$/,"can only have letters and digits"),
+            
         }),
         onSubmit: values => {
 
         
                 const work = values;
+                console.log(work.address);
+                console.log(props.ID);
+                booking({variables:{to: ""+props.ID,
+                                    workStationAddress: work.address,
+                                    workStationDistrict: work.district,
+                                    description:work.description}});
                 
-                console.log(work)
-                alert(JSON.stringify(work))
+                // console.log(work)
+                // alert(JSON.stringify(work))
 
-                fetch('http://localhost:8000/serviceprovider/addWork',{
-                    method: 'POST',
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify(work)
-                }).then(()=>{
-                    alert("Successfully submitted"); 
-                }).catch((err)=>{
-                    console.log(err);
-                })
+                // fetch('http://localhost:8000/serviceprovider/addWork',{
+                //     method: 'POST',
+                //     headers: {"Content-Type": "application/json"},
+                //     body: JSON.stringify(work)
+                // }).then(()=>{
+                //     alert("Successfully submitted"); 
+                // }).catch((err)=>{
+                //     console.log(err);
+                // })
                 
             
         }
     })
 
+    const[date,setDate]=useState();
+    const [booking,{data,loading,error}]=useMutation(BOOKING);
 
-
+    if (loading) return 'Submitting...';
+    if (error) return `Submission error! ${error.message}`;
 
 
     return(  
@@ -90,19 +97,13 @@ function AddWorkerForm({type}){
                                             <div className="card-body">
                                                 
                                                 <div style={{alignContent:"center"}}>
-                                                    <Calendar selectRange="True"/>
+                                                    <Calendar selectRange="True" minDate={new Date()} onChange={setDate} defaultValue={date}/>
+                                                    {console.log({date})}
                                                 </div>
                                                 <hr/>
                                                 <form onSubmit={formik.handleSubmit}>
                                                     <div className="row">
                                                         <div className="col-md-6">
-
-                                                            
-                                                            <div className="form-group">
-                                                                <label htmlFor="jobTitle">Job Title</label>
-                                                                <input type="text" className="form-control" value={formik.values.jobTitle} id="jobTitle" aria-label="Enter job title" placeholder="Job Title" onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
-                                                                { formik.touched.jobTitle && formik.errors.jobTitle ? <small id="nameError" className="error form-text text-muted error "> {formik.errors.jobTitle}</small>: null}
-                                                            </div>
                                                             <div className="form-group">
                                                                 <label htmlFor="description">Job Description</label>
                                                                 <textarea className="form-control" id="description" rows="5" value={formik.values.description} aria-label="Enter description" onChange={formik.handleChange} onBlur={formik.handleBlur} required></textarea>
@@ -110,36 +111,21 @@ function AddWorkerForm({type}){
                                                             </div>
                                                             
                                                             
-                                                            
-
                                                         
                                                     </div>
                                                     <div className="col-md-6">
                                                         
 
                                                             <div className="form-group">
-                                                                <label htmlFor="customerId">Customer ID</label>
-                                                                <input type="text" className="form-control" id="customerId" value={formik.values.id} aria-label="Enter Customer ID" placeholder="Customer ID" onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
-                                                                {formik.touched.customerId && formik.errors.customerId ? <small id="nameError" className="error form-text text-muted error "> {formik.errors.customerId}</small>: null}
-                                                            </div>
-                                                            <div className="form-group">
                                                                 <label htmlFor="address">Address</label>
                                                                 <input type="text" className="form-control" value={formik.values.address} aria-label="Enter Address" id="address" placeholder="Address" onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
                                                                 { formik.touched.address && formik.errors.address ? <small id="nameError" className="error form-text text-muted error "> {formik.errors.address}</small>: null}
                                                             </div>
                                                             <div className="form-group">
-                                                                <label htmlFor="phone">Customer Contact Number</label>
-                                                                <input type="tel" className="form-control" value={formik.values.phone} id="phone" aria-label="Enter phone Number" placeholder="Phone Number" onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
-                                                                {formik.touched.phone && formik.errors.phone ? <small id="nameError" className="error form-text text-muted error "> {formik.errors.phone}</small>: null}
+                                                                <label htmlFor="district">District</label>
+                                                                <input type="text" className="form-control" value={formik.values.district} id="district" aria-label="Enter your District" placeholder="District" onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
+                                                                {formik.touched.district && formik.errors.district ? <small id="nameError" className="error form-text text-muted error "> {formik.errors.district}</small>: null}
                                                             </div>
-
-                                                           
-
-                                                            
-                                                            
-                                                        
-                                                            
-
 
                                                             
                                                     </div>
@@ -164,4 +150,4 @@ function AddWorkerForm({type}){
     )
 }
 
-export default AddWorkerForm;
+export default ScheduleForm;

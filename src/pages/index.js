@@ -12,8 +12,8 @@ import CustomerWorkProgress from "./CustomerWorkProgress";
 import CustomerWorkDetails from "./CustomerWorkDetails";
 import CustomerEditProfile from "./CustomerEditProfile";
 import Review from "./rating";
-import WorkRequest from "./addRequest";
-import AddWork from "./addWork";
+import ScheduleWork from "./scheduleWork";
+
 import Work from "./work";
 import CustomerWorkDetailsUnpaid from "./CustomerWorkDetailsUnpaid";
 import SignIn from './signin';
@@ -36,14 +36,14 @@ const Pages=()=>{
             <Route path="/AdminUserList" component={AdminUserList} />
             <Route path="/AdminRegView" component={AdminRegView} />
             <Route path="/CustomerHomePage" component={CustomerHomePage} />
-            <Route path="/CustomerSPView" component={CustomerSPView} />
+            <Route path="/CustomerSPView/:id" component={CustomerSPView} />
             <Route path="/CustomerEditProfile" component={CustomerEditProfile} />
             <Route path="/CustomerWorkProgress" component={CustomerWorkProgress} />
             <Route path="/CustomerWorkDetails" component={CustomerWorkDetails} />
             <Route path="/CustomerWorkDetailsUnpaid" component={CustomerWorkDetailsUnpaid} />
             <Route path="/review" component={Review} />
-            <Route path="/request" component={WorkRequest} />
-            <Route path="/addWork" component={AddWork} />
+            <Route path="/scheduleWork/:id" component={ScheduleWork} />
+            
             <Route path="/work" component={Work} />
             <Route path="/signin" component={SignIn}/>
         </Router>

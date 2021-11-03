@@ -30,7 +30,7 @@ const NavBarCustomer=()=>{
                         <li  className="nav-item">
                             <Link to="/CustomerWorkProgress" className="nav-link "><span className="pcoded-micon"><i className="feather icon-home"></i></span><span className="pcoded-mtext">Ongoing Work Progress</span></Link>
                         </li>
-                        <li class="nav-item pcoded-hasmenu">
+                        <li class="nav-item pcoded-has-menu">
                             <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Finished Work Details</span></a>
                             <ul class="pcoded-submenu">
                                 <li class=""><a href="/CustomerWorkDetailsUnpaid" class="">Unpaid</a></li>

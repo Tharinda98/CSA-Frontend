@@ -3,12 +3,28 @@ import {Link} from 'react-router-dom';
 import CustomerReviewCard from "../components/customerComponents/CustomerReviewCard";
 import BreadCrumb from "../components/breadcrumb";
 import NormalHeader from "../components/normalHeader";
-
-const CustomerSPView=()=>{
+import { useQuery } from "@apollo/client";
+import {GET_UNIQUE_SP} from "../GraphQL/Queries";
+import React, { useEffect } from 'react';
+const CustomerSPView=(props)=>{
+    console.log(props.id);
+    const ID=props.match.params.id;
+    useEffect(() => {
+        SPdetails.refetch({provider: ""+props.match.params.id}).then(value =>{
+                console.log(value);
+            });
+      });
+  
+    const SPdetails=useQuery(GET_UNIQUE_SP,{
+        variables:{provider: ""+props.match.params.id}
+    });
     return(
+        
         <div>
+            
             <NavBarCustomer/>
             <NormalHeader/>
+            
 
             <div className="pcoded-main-container">
                 <div className="pcoded-wrapper">
@@ -16,7 +32,7 @@ const CustomerSPView=()=>{
                         <div className="pcoded-inner-content">
                             <BreadCrumb type="Service Provider" reason="View"/>
                             <div className="row">
-
+                            {console.log(SPdetails)}
                                 <div>
                                     <div className="card yearly-sales">
                                         <div className="card-block" style={{padding:'10px 30px 0px 35px'}}>
@@ -32,7 +48,7 @@ const CustomerSPView=()=>{
                                                     
                                                     Rate  
                                                 </Link>
-                                                <Link to="/request" className="btn btn-primary" style={{width:'100%',height:'25px',padding:'0px 0px',background:'#038fcf'}}>
+                                                <Link to={"/scheduleWork/"+ID} className="btn btn-primary" style={{width:'100%',height:'25px',padding:'0px 0px',background:'#038fcf'}}>
                                                     Schedule Work
                                                     
                                                 </Link>
@@ -55,36 +71,67 @@ const CustomerSPView=()=>{
                                     <div className="card yearly-sales">
                                         <div className="card-block" style={{padding:'10px 30px 10px 30px'}}>
                                             <div className="card-header">
-                                                <h5>title</h5>
+                                                <h5>{SPdetails.data == null ? "Name" : SPdetails.data.UniqueSearchSP.name } </h5>
                                             </div>
 
                     
                                             <div className="" style={{paddingTop:"25px"}}>
                                                 <div className="row" style={{display:"flex"}}>
                                                     <div className="col-4 col-md-4 col-sm-4">
-                                                        Services:
+                                                        Email:
                                                     </div>
                                                     <div className="col-8 col-md-8 col-sm-8">
-                                                        First Service 
-                                
-                                                        <hr/>
-                                                        Second Service 
-                                                        <hr/>
-                                                        Third Service Service 
-                                                        <hr/>
-                                                        
+                                                        {SPdetails.data == null ? "Email" : SPdetails.data.UniqueSearchSP.email } 
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <div className="row" style={{display:"flex"}}>
+                                                    <div className="col-4 col-md-4 col-sm-4">
+                                                        Address:
+                                                    </div>
+                                                    <div className="col-8 col-md-8 col-sm-8">
+                                                        {SPdetails.data == null ? "Address" : SPdetails.data.UniqueSearchSP.address } 
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <div className="row" style={{display:"flex"}}>
+                                                    <div className="col-4 col-md-4 col-sm-4">
+                                                        Contact No:
+                                                    </div>
+                                                    <div className="col-8 col-md-8 col-sm-8">
+                                                        {SPdetails.data == null ? "Contact No" : SPdetails.data.UniqueSearchSP.contact_no } 
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <div className="row" style={{display:"flex"}}>
+                                                    <div className="col-4 col-md-4 col-sm-4">
+                                                        Name of the Owner:
+                                                    </div>
+                                                    <div className="col-8 col-md-8 col-sm-8">
+                                                        {SPdetails.data == null ? " Name of the Owner" : SPdetails.data.UniqueSearchSP.owner.owner_name } 
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                                <div className="row" style={{display:"flex"}}>
+                                                    <div className="col-4 col-md-4 col-sm-4">
+                                                        Membership:
+                                                    </div>
+                                                    <div className="col-8 col-md-8 col-sm-8">
+                                                        {SPdetails.data == null ? "Membership" : SPdetails.data.UniqueSearchSP.membership.membership_name } 
                                                     </div>
                                                 </div>
                                                 <hr/>
                         
                                                 <div className="row" style={{display:"flex"}}>
                                                     <div className="col-4 col-md-4 col-sm-4">
-                                                        Districts:
+                                                        Working Range:
                                                     </div>
                                                     <div className="col-8 col-md-8 col-sm-8">
                                                         <div>
-                                                            Kalutara <hr/>
-                                                            Jaffna <hr/>
+                                                            {SPdetails.data == null ? "Membership" : SPdetails.data.UniqueSearchSP.workingRange.map(range=>(
+                                                                range+" , " 
+                                                            )) }
+                                    
                                                         </div>
                                                         
                                                     </div>
