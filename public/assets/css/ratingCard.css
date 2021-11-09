@@ -1,0 +1,97 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial;
+} */
+/* .star-rating form {
+    display: none;
+} */
+.star-rating .thanks-msg {
+    display: none;
+    font-size: 20px;
+    margin: 40px auto;
+    color: #4caf50;
+    background-color: rgba(76, 175, 80, 0.1411764705882353);
+    padding: 8px 20px;
+    border-left: 3px solid #4caf50;
+    border-radius: 20px;
+}
+.star-rating input {
+    display: none;
+}
+.star-rating {
+    margin: 10px auto;
+    display: table;
+    width: 350px;
+}
+.star-rating label {
+    padding: 10px;
+    float: right;
+    font-size: 44px;
+    color: #eee;
+}
+.star-rating input:not(:checked) ~ label:hover,
+.star-rating input:not(:checked) ~ label:hover ~ label {
+    color: #ffc107;
+}
+.star-rating input:checked ~ label {
+    color: #ffc107;
+}
+.star-rating form .rating-reaction:before {
+    width: 100%;
+    float: left;
+    color: #ffc107;
+}
+.star-rating #rating-1:checked ~  .rating-reaction:before {
+    content: "not satified";
+    font-size: small;
+    color: red;
+}
+.star-rating #rating-2:checked ~  .rating-reaction:before {
+    content: "not satisfied";
+    font-size: small;
+    color: #fd7e14;
+}
+.star-rating #rating-3:checked ~  .rating-reaction:before {
+    content: "satisfied";
+    font-size: small;
+    color: #ffc107;
+}
+.star-rating #rating-4:checked ~  .rating-reaction:before {
+    content: "good !!!";
+    font-size: small;
+    color: #28a745;
+    
+}
+.star-rating #rating-5:checked ~  .rating-reaction:before {
+    content: "highly appreciate !!!";
+    font-size: small;
+    color: green;
+}
+.star-rating input:checked ~ form {
+    border-top: 1px solid #ddd;
+    width: 100%;
+    padding-top: 15px;
+    margin-top: 15px;
+    display: inline-block;
+}
+.star-rating .rating-reaction {
+    font-size: 24px;
+    float: left;
+    text-transform: capitalize;
+}
+.star-rating .submit-rating {
+    border: none;
+    outline: none;
+    background: #795548;
+    color: #ffc107;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 5px 15px;
+    cursor: pointer;
+    float: right;
+}
+.submit-rating:hover {
+    background-color: #333;
+}
