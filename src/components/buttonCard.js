@@ -24,7 +24,7 @@ const ButtonCard = ({id,array,setArray}) => {
 
                     {id} <i className="fas fa-user-minus"></i>
                 </button>
-                <span className="tooltiptext" >Click to edit password</span>
+                <span className="tooltiptext" >Click to remove</span>
             </div> 
             
         </div>
