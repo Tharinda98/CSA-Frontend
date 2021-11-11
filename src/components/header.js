@@ -1,5 +1,5 @@
 import {BrowserRouter as Router,Link} from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 
