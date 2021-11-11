@@ -21,19 +21,19 @@ const CustomerRoute = ({ component: Component, ...rest }) => {
     return (
       <Route
         {...rest}
-        render={props =>
+        render={props => <Component {...props} />
           
-          type == "Customer" ? (
+          // type == "Customer" ? (
             
-            <Component {...props} />
-          ) : (
-           <Redirect
-              to={{
-                pathname: '/signInCustomer',
-                state: { from: props.location }
-              }}
-            /> 
-          )
+          //   <Component {...props} />
+          // ) : (
+          //  <Redirect
+          //     to={{
+          //       pathname: '/signInCustomer',
+          //       state: { from: props.location }
+          //     }}
+          //   /> 
+          // )
         }
       />
     );
