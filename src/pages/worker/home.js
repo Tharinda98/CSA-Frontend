@@ -7,7 +7,7 @@ import Preloader from '../../components/preloader';
 
 import swal from 'sweetalert';
 
-import { useEffect, useState } from 'react/cjs/react.development';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import {  HOME_PAGE } from '../../GraphQL/workerQueries';
 
