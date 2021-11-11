@@ -2,7 +2,7 @@
 import Content from '../components/home';
 
 
-import { useEffect, useState } from 'react/cjs/react.development';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { SP_DASHBOARD } from '../GraphQL/Queries';
 
