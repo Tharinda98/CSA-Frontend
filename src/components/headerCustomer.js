@@ -72,7 +72,7 @@ const HeaderCustomer=()=>{
                             <div className="dropdown-menu dropdown-menu-right notification">
                                
                                 <div className="noti-footer">
-                                    <Link to="/viewRequest">show all</Link>
+                                    <Link to="/Customer/notifications">show all</Link>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ const HeaderCustomer=()=>{
                                 <ul className="pro-body">
                                     {/* <li><Link to="#0" className="dropdown-item"><i className="feather icon-settings"></i> Settings</Link></li> */}
                                     <li><Link to="/Customer/Profile" className="dropdown-item"><i className="feather icon-user"></i> My Profile</Link></li>
-                                    <li><Link to="#0" className="dropdown-item"><i className="feather icon-mail"></i> Messages</Link></li>
+                                    <li><Link to={`/Customer/messages`} className="dropdown-item"><i className="feather icon-mail"></i> Messages</Link></li>
                                     <li><button onClick={signOut} className="dropdown-item"><i className="feather icon-lock"></i> Log Out</button></li>
                                 </ul>
                             </div>

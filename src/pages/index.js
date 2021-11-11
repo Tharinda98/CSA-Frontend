@@ -80,6 +80,8 @@ import AdminRegList from "./systemAdmin/AdminRegList";
 import AdminUserList from "./systemAdmin/AdminUserList";
 import AdminRegView from "./systemAdmin/AdminRegView";
 import CustomerEditProfile from "./customer/CustomerEditProfile";
+import CustomerMessage from './customer/messages';
+import CustomerNotification from './customer/notification';
 
 const IS_LOGGED_IN = gql`
   {
@@ -122,7 +124,9 @@ const Pages = () => {
         <CustomerRoute exact path="/Customer/CustomerWorkDetails" component={CustomerWorkDetails}/>
         <CustomerRoute exact path="/Customer/CustomerWorkDetailsUnpaid" component={CustomerWorkDetailsUnpaid}/>
         <CustomerRoute exact path="/Customer/CustomerWorkProgress" component={CustomerWorkProgress}/>
-         <CustomerRoute exact path='/Customer/Profile' component={CustomerEditProfile}/>
+        <CustomerRoute exact path='/Customer/Profile' component={CustomerEditProfile}/>
+        <CustomerRoute exact path='/Customer/messages' component={CustomerMessage}/>
+        <CustomerRoute exact path='/Customer/notifications' component={CustomerNotification}/>
 
         <AdminRoute exact path="/Admin/AdminHomePage" component={AdminHomePage}/>
         <AdminRoute exact path="/Admin/AdminRegList" component={AdminRegList}/>

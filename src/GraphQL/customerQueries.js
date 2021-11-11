@@ -117,4 +117,43 @@ query Query($provider: ID!) {
   }
 }`;
 
-export {IS_LOGGED_IN,GET_FILTERED_SP_LIST,CUSTOMER_ME, GET_DISTRICTS, GET_SERVICES,GET_UNIQUE_SP,WORK_PROGRESS,FINISHED_WORKS, GET_SP_REVIEW};
+const GET_CUSTOMER_MESSAGES= gql `
+query Query($offset: Int!, $page: Int!) {
+  getMyMessages(offset: $offset, page: $page) {
+    _id
+    by
+    to
+    message
+    read
+    received_date
+  }
+  getCountMessages {
+    _id
+    Count
+  }
+}`;
+
+const GET_CUSTOMER_NOTIFICATION = gql `
+query Customer_getMyNotification {
+  customer_getMyNotification {
+    message
+    date
+    state
+    _id
+  }
+  getCountNotification {
+    _id
+    Count
+  }
+}`;
+
+export {IS_LOGGED_IN,
+  GET_FILTERED_SP_LIST,
+  CUSTOMER_ME, GET_DISTRICTS, 
+  GET_SERVICES,
+  GET_UNIQUE_SP,
+  WORK_PROGRESS,
+  FINISHED_WORKS, 
+  GET_SP_REVIEW,
+GET_CUSTOMER_MESSAGES,
+GET_CUSTOMER_NOTIFICATION};

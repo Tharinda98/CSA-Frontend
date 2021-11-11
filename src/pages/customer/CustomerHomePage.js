@@ -16,6 +16,12 @@ const CustomerHomePage=()=>{
     const [Filter,setFilter]=useState('Select Filter');
     const [service,setService]=useState('Select Service');
     
+    const signOut = ()=>{
+        localStorage.removeItem('token')
+        localStorage.removeItem('role')
+        localStorage.removeItem('refresh');
+        window.location.href='/signin'
+    }
     // const changeDistrict = (event)=> {
     //     setProvince(event);
     //     console.log(event);
@@ -128,50 +134,10 @@ const CustomerHomePage=()=>{
                         <div className="dropdown">
                             <Link className="dropdown-toggle" to="#0" data-toggle="dropdown"><i className="icon feather icon-bell"></i></Link>
                             <div className="dropdown-menu dropdown-menu-right notification">
-                                <div className="noti-head">
-                                    <h6 className="d-inline-block m-b-0">Notifications</h6>
-                                    <div className="float-right">
-                                        <Link to="#0" className="m-r-10">mark as read</Link>
-                                        <Link to="#0">clear all</Link>
-                                    </div>
-                                </div>
-                                <ul className="noti-body">
-                                    <li className="n-title">
-                                        <p className="m-b-0">NEW</p>
-                                    </li>
-                                    <li className="notification">
-                                        <div className="media">
-                                            <img className="img-radius" src="assets/images/user/avatar-1.jpg" alt="Generic placeholder"/>
-                                            <div className="media-body">
-                                                <p><strong>John Doe</strong><span className="n-time text-muted"><i className="icon feather icon-clock m-r-10"></i>30 min</span></p>
-                                                <p>New ticket Added</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li className="n-title">
-                                        <p className="m-b-0">EARLIER</p>
-                                    </li>
-                                    <li className="notification">
-                                        <div className="media">
-                                            <img className="img-radius" src="assets/images/user/avatar-2.jpg" alt="Generic placeholder"/>
-                                            <div className="media-body">
-                                                <p><strong>Joseph William</strong><span className="n-time text-muted"><i className="icon feather icon-clock m-r-10"></i>30 min</span></p>
-                                                <p>Prchace New Theme and make payment</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li className="notification">
-                                        <div className="media">
-                                            <img className="img-radius" src="assets/images/user/avatar-3.jpg" alt="Generic placeholder"/>
-                                            <div className="media-body">
-                                                <p><strong>Sara Soudein</strong><span className="n-time text-muted"><i className="icon feather icon-clock m-r-10"></i>30 min</span></p>
-                                                <p>currently login</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                
+                                
                                 <div className="noti-footer">
-                                    <Link to="/viewRequest">show all</Link>
+                                    <Link to="/Customer/notifications">show all</Link>
                                 </div>
                             </div>
                         </div>
@@ -191,9 +157,9 @@ const CustomerHomePage=()=>{
                                 </div>
                                 <ul className="pro-body">
                                     {/* <li><Link to="#0" className="dropdown-item"><i className="feather icon-settings"></i> Settings</Link></li> */}
-                                    <li><Link to="/profile" className="dropdown-item"><i className="feather icon-user"></i> My Profile</Link></li>
-                                    <li><Link to="#0" className="dropdown-item"><i className="feather icon-mail"></i> Messages</Link></li>
-                                    <li><Link to="#0" className="dropdown-item"><i className="feather icon-lock"></i> Log Out</Link></li>
+                                    <li><Link to="/Customer/Profile" className="dropdown-item"><i className="feather icon-user"></i> My Profile</Link></li>
+                                    <li><Link to={`/Customer/messages`} className="dropdown-item"><i className="feather icon-mail"></i> Messages</Link></li>
+                                    <li><button onClick={signOut} className="dropdown-item"><i className="feather icon-lock"></i> Log Out</button></li>
                                 </ul>
                             </div>
                         </div>
