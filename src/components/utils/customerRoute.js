@@ -17,16 +17,17 @@ const CustomerRoute = ({ component: Component, ...rest }) => {
     if (loading) return <p>Loading...</p>;
     // if there is an error fetching the data, display an error message
    if (error) return <p>Error!</p>;
-  //  data.isLoggedIn === true && 
+   
     return (
       <Route
         {...rest}
-        render={props => <Component {...props} />
+        render={props => 
           
-          // type == "Customer" ? (
+         data.isLoggedIn === true &&  type == "Customer" ? (
             
-          //   <Component {...props} />
-          // ) : (
+            <Component {...props} />
+          ) :null
+          // : (
           //  <Redirect
           //     to={{
           //       pathname: '/signInCustomer',
