@@ -1,7 +1,7 @@
 import ViewWorker from "../../components/employee/view/viewWorker";
 
 import { useEffect } from 'react';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import {useQuery} from "@apollo/client";
 
 //components
