@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import {GET_ME} from '../GraphQL/Queries'
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 
 
