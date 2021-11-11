@@ -26,15 +26,15 @@ const CustomerRoute = ({ component: Component, ...rest }) => {
          data.isLoggedIn === true &&  type == "Customer" ? (
             
             <Component {...props} />
-          ) :null
-          // : (
-          //  <Redirect
-          //     to={{
-          //       pathname: '/signInCustomer',
-          //       state: { from: props.location }
-          //     }}
-          //   /> 
-          // )
+          ) 
+          : (
+           <Redirect
+              to={{
+                pathname: '/signInCustomer',
+                state: { from: props.location }
+              }}
+            /> 
+          )
         }
       />
     );
