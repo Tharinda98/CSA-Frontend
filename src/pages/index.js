@@ -96,7 +96,7 @@ const Pages = () => {
   return (
     <Router>
 
-        
+        <Route path="/" exact component={SignIn}/> 
         <Route path="/signin" component={SignIn}/> 
         <Route path="/signup" component={SignUp}/>
         <Route path="/success" component={SuccessPage}/> 
