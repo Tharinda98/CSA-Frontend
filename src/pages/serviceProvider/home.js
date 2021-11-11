@@ -5,7 +5,7 @@ import Header from "../../components/header";
 import NavBar from '../../components/navbar';
 import Preloader from '../../components/preloader';
 
-import { useEffect, useState } from 'react/cjs/react.development';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { SP_DASHBOARD } from '../../GraphQL/Queries';
 
