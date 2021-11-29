@@ -45,7 +45,7 @@ const CustomerEditProfile=()=>{
                                             <div style={{ margin:'15px',display:'flex'}}>
                                                 <Link to="/review" className="btn btn-primary" style={{width:'100%',height:'25px',padding:'0px 0px',background:'#5e8d25',borderColor:'#5e8d25'}}>
                                                     
-                                                    Change Profile Picture  
+                                                    Change Profile Pictures  
                                                 </Link>
                                             </div>
                                         </div>
