@@ -9,10 +9,6 @@ query Admin_getOpenSP {
     contact_no
     email
     bank_acc_no
-    owner {
-      owner_name
-      owner_NIC
-    }
     joined_at
     _id
     membership {

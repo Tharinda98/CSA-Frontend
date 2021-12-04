@@ -20,8 +20,8 @@ const SPRequest=(props)=>{
                                                     <p className="m-0">Email: {props.details.email}</p>
                                                 </td>
                                                 <td>
-                                                    <h6 className="text-muted"><i className="fas fa-circle text-c-green f-10 m-r-15"></i>Owner: {props.details.owner.owner_name}</h6>
-                                                    <h6 className="text-muted"><i className="fas fa-circle text-c-green f-10 m-r-15"></i>NIC: {props.details.owner.owner_NIC}</h6>
+                                                    {/* <h6 className="text-muted"><i className="fas fa-circle text-c-green f-10 m-r-15"></i>Owner: {props.details.owner.owner_name}</h6>
+                                                    <h6 className="text-muted"><i className="fas fa-circle text-c-green f-10 m-r-15"></i>NIC: {props.details.owner.owner_NIC}</h6> */}
                                                     <h6 className="text-muted"><i className="fas fa-circle text-c-green f-10 m-r-15"></i>Requested Membership: {props.details.membership.membership_name}</h6>
                                                     
                                                 </td>
