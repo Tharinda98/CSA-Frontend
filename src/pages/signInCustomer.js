@@ -54,8 +54,8 @@ const SignIn = (props) => {
                             Moderator/Admin
                         </Link>
                     </p>
-                    <p className="mb-0 text-muted">Create a Service Provider? 
-                        <Link to="signup" style={{color:'#038fcf',fontStyle:'italic',textDecoration:'underline'}}>
+                    <p className="mb-0 text-muted">Create an account 
+                        <Link to="/signupCustomer" style={{color:'#038fcf',fontStyle:'italic',textDecoration:'underline'}}>
                             Signup
                         </Link>
                     </p>
