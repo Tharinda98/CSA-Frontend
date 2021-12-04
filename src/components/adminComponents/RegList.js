@@ -7,7 +7,7 @@ const RegList=()=>{
 
     const requests=useQuery(GET_SP_REQUESTS);
     if (requests.loading) return <p>Loading</p>;
-    if (requests.error) return <p>error!</p>;
+    if (requests.error) return <p>error!1</p>;
 
     return(
         <div className="pcoded-main-container">
