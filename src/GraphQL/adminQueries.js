@@ -1,6 +1,6 @@
 import {useQuery,gql} from '@apollo/client';
 
-const GET_SP_REQUESTS= gql `
+const GET_SP_REQUESTS= gql`
 query Admin_getOpenSP {
   admin_getOpenSP {
     username
@@ -22,7 +22,7 @@ query Admin_getOpenSP {
 }
 `;
 
-const GET_SP_DETAILS = gql `
+const GET_SP_DETAILS = gql`
 query Query {
   showServiceProviders {
     username
