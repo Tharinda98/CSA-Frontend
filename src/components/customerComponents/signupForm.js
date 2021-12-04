@@ -102,7 +102,7 @@ const SignupForm=({error,setUsername,username,setUserError,action,loadingSignUp}
                                 <div className="col-md-6">
 
                                     <div className="form-group">
-                                        <label htmlFor="name">Company Name</label>
+                                        <label htmlFor="name">Customer's Full Name</label>
                                         <input type="text" className="form-control" value={formik.values.name} id="name" placeholder="Eg: Painting Pvt Ltd" onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
                                         { formik.touched.name && formik.errors.name ? <small id="nameError" className="error form-text text-muted error "> {formik.errors.name}</small>: null}
                                     </div>
