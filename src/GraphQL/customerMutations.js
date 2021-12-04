@@ -37,10 +37,30 @@ mutation Mutation($appointment: ID!) {
   confirmPayment(appointment: $appointment)
 }`;
 
+const SIGNUP_CUSTOMER= gql`
+mutation Mutation(
+  $username: String!, 
+  $password: String!, 
+  $name: String!, 
+  $contactNo: String!, 
+  $email: String!) {
+
+  signUPCustomer(
+    username: $username, 
+    password: $password, 
+    name: $name, 
+    contact_no: $contactNo, 
+    email: $email) {
+    _id
+  }
+}
+`
+
 export{
     SIGN_IN_CUSTOMER,
     BOOKING,
     REVIEW_SP,
     PAYMENT_DETAILS,
     CONFIRM_PAYMENT,
+    SIGNUP_CUSTOMER,
 }

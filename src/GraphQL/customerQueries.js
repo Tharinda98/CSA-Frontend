@@ -147,6 +147,12 @@ query Customer_getMyNotification {
   }
 }`;
 
+const CHECK_USERNAME = gql`
+query Query($username: String!) {
+  CheckUsername(username: $username)
+}
+`;
+
 export {IS_LOGGED_IN,
   GET_FILTERED_SP_LIST,
   CUSTOMER_ME, GET_DISTRICTS, 
@@ -155,5 +161,6 @@ export {IS_LOGGED_IN,
   WORK_PROGRESS,
   FINISHED_WORKS, 
   GET_SP_REVIEW,
+  CHECK_USERNAME,
 GET_CUSTOMER_MESSAGES,
 GET_CUSTOMER_NOTIFICATION};
