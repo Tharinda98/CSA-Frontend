@@ -30,7 +30,7 @@ const SignUpCustomer =(props) => {
                 if(data.data && data.data.CheckUsername){
                     setUserError("")
                 }else{
-                    setUserError("")
+                    setUserError("Already Exist")
                 }
                 
             })
