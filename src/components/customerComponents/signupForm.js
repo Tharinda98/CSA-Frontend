@@ -103,7 +103,7 @@ const SignupForm=({error,setUsername,username,setUserError,action,loadingSignUp}
 
                                     <div className="form-group">
                                         <label htmlFor="name">Customer's Full Name</label>
-                                        <input type="text" className="form-control" value={formik.values.name} id="name" placeholder="Eg: Painting Pvt Ltd" onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
+                                        <input type="text" className="form-control" value={formik.values.name} id="name" placeholder="Eg: Tharinda Thamaranga" onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
                                         { formik.touched.name && formik.errors.name ? <small id="nameError" className="error form-text text-muted error "> {formik.errors.name}</small>: null}
                                     </div>
                                     <div className="form-group">
