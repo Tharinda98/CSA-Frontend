@@ -27,11 +27,7 @@ query Query {
     contact_no
     email
     state
-    owner {
-      owner_name
-      owner_NIC
-      contact_no
-    }
+    
   }
 }`;
 
