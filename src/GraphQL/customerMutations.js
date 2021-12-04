@@ -54,7 +54,7 @@ mutation Mutation(
     _id
   }
 }
-`
+`;
 
 export{
     SIGN_IN_CUSTOMER,
