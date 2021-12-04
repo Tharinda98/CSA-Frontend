@@ -6,7 +6,7 @@ import { BrowserRouter as Router,Link } from 'react-router-dom';
 import Loading from '../loading';
 import swal from 'sweetalert';
 
-const SignupForm=({error,loading,setUsername,username,setUserError,action,loadingSignUp})=>{
+const SignupForm=({error,setUsername,username,setUserError,action,loadingSignUp})=>{
     // password visibility code
     
     const [addPassword,setAddPassword] = useState("password");
@@ -95,8 +95,7 @@ const SignupForm=({error,loading,setUsername,username,setUserError,action,loadin
                         <h3 className="mb-4">Sign up for Customer</h3>
                     </div>
                     
-                    {!loading?
-                    <>
+                   
                     <div style={{marginBottom:25}}>
                         <form onSubmit={formik.handleSubmit}>
                             <div className="row">
@@ -169,10 +168,7 @@ const SignupForm=({error,loading,setUsername,username,setUserError,action,loadin
                         </form>
                     </div>
                     
-                    </>
-                    :
-                        <Loading/>
-                    }
+                    
                     
                     <br/>
 

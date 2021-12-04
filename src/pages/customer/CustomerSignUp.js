@@ -50,7 +50,7 @@ const SignUpCustomer =(props) => {
             </div>
                     <SignupForm
                    
-                    loading = {loading}
+                    
                     setUsername = {setUsername}
                     error = {usererror}
                     username = {username}
